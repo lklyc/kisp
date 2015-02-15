@@ -1,0 +1,24 @@
+class UsersController < ApplicationController
+  def new
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(users_params)
+
+    if @user.save
+      flash[:success] = "Registration Complete."
+      redirect_to root_path
+    else
+      flash[:error] = "Oops... something's wrong"
+      render :new
+    end
+
+  end
+
+  private
+
+  def users_params
+    params.require(:user).permit!
+  end
+end

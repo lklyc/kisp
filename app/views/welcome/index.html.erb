@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>mb</h1>
+      <p>Exec briefings of trending articles for busy people</p>
+      <%= link_to "Sign Up", users_register_path, class: "btn btn-primary btn-lg" %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<% @article.each do |article| %>
+
+    <div class="well well-lg">
+      <h4><%= article.title %></h4>
+      <p>Full article on: <%= link_to article.published_on, article.url %>, by <%= article.author %></p>
+      <br/>
+      <% if article.briefs.empty? %>
+        <p>No briefs for this article yet, publish one?</p>
+      <% else %>
+        <p><%= article.briefs.first.body %></p>
+      <% end %>
+    </div>
+
+<% end %>
+</div>
