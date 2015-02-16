@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
   resources :users, only: [:create]
-  resources :articles, only: [:new, :create, :show]
+  resources :articles, only: [:new, :create, :show] do
+    resources :briefs, only: [:new, :create]
+  end
+
   get 'users/register', to: 'users#new'
 
   # Example of regular route:

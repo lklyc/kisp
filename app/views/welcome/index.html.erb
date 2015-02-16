@@ -12,15 +12,23 @@
 <% @article.each do |article| %>
 
     <div class="well well-lg">
-      <h4><%= article.title %></h4>
-      <p>Full article on: <%= link_to article.published_on, article.url %>, by <%= article.author %></p>
-      <br/>
+      <h4><%= article.title %> &bull; <%= article.author %></h4>
+      <quiet>
+         <%= link_to '(more)', article_path(article) %> &middot;
+        <%= link_to '(add Brief)', new_article_brief_path(article) %> &middot;
+        (comment) &middot; 
+        <%= link_to '(full article)', article.url %> &middot;
+      </quiet>
+      <hr/>
       <% if article.briefs.empty? %>
         <p>No briefs for this article yet, publish one?</p>
+        <hr/>
       <% else %>
-        <p><%= article.briefs.first.body %></p>
+        <% article.briefs.each do |brief| %>
+          <%= render 'briefs/show_briefs', brief: brief %>
+        <% end %>
       <% end %>
+      <p># of Briefs: <%= article.briefs.count %></p>
     </div>
-
 <% end %>
 </div>

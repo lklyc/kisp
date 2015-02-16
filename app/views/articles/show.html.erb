@@ -1,0 +1,35 @@
+<%= render 'shared/header', header: @article.title, subtitle: nil %>
+
+<div class="container">
+  <ul class='nav nav-tabs'>
+    <li class="<%= 'active' if params[:tab].nil?%>">
+      <%= link_to "Briefs (#{@article.briefs.size})", article_path(@article) %>
+    </li>
+    <li class="<%= 'active' if params[:tab]=='comments'%>">
+      <%= link_to "Comments (#{@article.comments.size})", article_path(@article, tab: 'comments') %>
+    </li>
+  </ul>
+</div>
+
+<br/>
+
+<div class="container">
+  <% if params[:tab].nil? %>
+    <% if @article.briefs.empty? %>
+      <p>No briefs for this article yet, publish one?</p>
+      <hr/>
+    <% else %>
+      <% @article.briefs.each do |brief| %>
+        <div class="well well-lg">
+          <%= render 'briefs/show_briefs', brief: brief %>
+        </div>
+      <% end %>
+    <% end %>
+
+  <% else %>
+    <div class="well well-lg">
+      <p>show comments here</p>
+    </div>
+
+  <% end %>
+</div>
