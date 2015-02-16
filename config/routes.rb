@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create]
   resources :articles, only: [:new, :create, :show] do
     resources :briefs, only: [:new, :create]
+    resources :comments, only: [:create]
   end
 
   get 'users/register', to: 'users#new'

@@ -16,7 +16,7 @@
       <quiet>
          <%= link_to '(more)', article_path(article) %> &middot;
         <%= link_to '(add Brief)', new_article_brief_path(article) %> &middot;
-        (comment) &middot; 
+        <%= link_to '(comment)', article_path(article, tab: 'comments') %> &middot; 
         <%= link_to '(full article)', article.url %> &middot;
       </quiet>
       <hr/>

@@ -12,7 +12,7 @@ class BriefsController < ApplicationController
 
     if @brief.save
       flash[:success] = 'Brief has been created'
-      redirect_to root_path
+      redirect_to :back
     else
       render :new
     end

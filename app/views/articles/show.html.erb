@@ -1,6 +1,6 @@
 <%= render 'shared/header', header: @article.title, subtitle: nil %>
 
-<div class="container">
+<div class="container", id='container-articles-show'>
   <ul class='nav nav-tabs'>
     <li class="<%= 'active' if params[:tab].nil?%>">
       <%= link_to "Briefs (#{@article.briefs.size})", article_path(@article) %>
@@ -9,12 +9,13 @@
       <%= link_to "Comments (#{@article.comments.size})", article_path(@article, tab: 'comments') %>
     </li>
   </ul>
-</div>
 
 <br/>
 
-<div class="container">
+
   <% if params[:tab].nil? %>
+    <%= link_to 'new Brief', new_article_brief_path(@article), class: 'btn btn-success' %>
+    <hr/>
     <% if @article.briefs.empty? %>
       <p>No briefs for this article yet, publish one?</p>
       <hr/>
@@ -27,9 +28,18 @@
     <% end %>
 
   <% else %>
-    <div class="well well-lg">
-      <p>show comments here</p>
-    </div>
-
+    <%= form_for [@article,@comment] do |f| %>
+      <div class='form-group'>
+        <%= f.label :body %>
+        <%= f.text_area :body, rows: 3, class: 'form-control' %>
+      </div>
+      <%= f.submit 'Create', class: 'btn btn-success' %>
+    <% end %>
+    <hr/>
+      <% @article.comments.each do |comment| %>
+        <div class="well well-lg">
+          <em><%=comment.body%></em>
+        </div>
+      <% end %>
   <% end %>
 </div>
