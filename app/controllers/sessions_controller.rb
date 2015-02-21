@@ -5,10 +5,10 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] = "You're In"
-      redirect_to root_path
+      redirect_to :back
     else
       flash[:error] = "Incorrect email or password"
-      redirect_to root_path
+      redirect_to :back
     end
 
   end

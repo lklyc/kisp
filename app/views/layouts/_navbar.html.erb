@@ -5,14 +5,12 @@
         <div class="navbar-brand"><span class="glyphicon glyphicon-file"></span></div>
       <% end %>
     </div>
-    <div class='nav_item'>
-      <p class="navbar-text">Articles</p>
-      <p class="navbar-text">News</p>
-      <p class="navbar-text">Things</p>
-    </div>
-    <div class='nav_item'>
-      <%= link_to 'New Article', new_article_path, class: "navbar-text" %>
-    </div>
+    
+    <% if logged_in? # show more options %>
+      <div class='nav_item'>
+        <%= link_to 'New Article', new_article_path, class: "navbar-text" %>
+      </div>
+    <% end %>
 
     <div id="navbar" class="navbar-collapse collapse">
       <!--Sign in -->
