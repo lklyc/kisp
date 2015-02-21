@@ -30,7 +30,7 @@
   <% else %>
     <%= form_for [@article,@comment] do |f| %>
       <div class='form-group'>
-        <%= f.label :body %>
+        <%= f.label :body, 'new comment' %>
         <%= f.text_area :body, rows: 3, class: 'form-control' %>
       </div>
       <%= f.submit 'Create', class: 'btn btn-success' %>

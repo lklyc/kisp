@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>D<sup>2</sup>y</h1>
+      <p>2-minute briefs of trending articles</p>
+      <%= link_to "Sign Up", users_register_path, class: "btn btn-primary btn-lg" %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+<% @article.each do |article| %>
+
+    <div class="well well-lg">
+      <h4><%= article.title %> &bull; <%= article.author %></h4>
+      <quiet>
+         <%= link_to '(more)', article_path(article) %> &middot;
+        <%= link_to '(add Brief)', new_article_brief_path(article) %> &middot;
+        <%= link_to '(comment)', article_path(article, tab: 'comments') %> &middot; 
+        <%= link_to '(full article)', article.url %>
+      </quiet>
+      <p class="quiet">posted by <%=article.user.first_name%> on <%=article.created_at%></p>
+      <hr/>
+      <% if article.briefs.empty? %>
+        <p>No briefs for this article yet, publish one?</p>
+        <hr/>
+      <% else %>
+        <% article.briefs.each do |brief| %>
+          <%= render 'briefs/show_briefs', brief: brief %>
+        <% end %>
+      <% end %>
+      <p># of Briefs: <%= article.briefs.count %></p>
+    </div>
+<% end %>
+</div>

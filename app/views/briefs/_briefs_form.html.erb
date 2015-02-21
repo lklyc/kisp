@@ -1,0 +1,10 @@
+<div class="container" id="container-forms">
+  <%= form_for [@article, @brief] do |f| %>
+    <div class='form-group'>
+      <%= f.label :body, 'The Brief' %>
+      <%= f.text_area :body, rows: 10, class: "form-control" %>
+    </div>
+    <p class="text-right">1500 characters limit</p>
+    <%= f.submit 'Create', class: 'btn btn-success' %>
+  <% end %>
+</div>

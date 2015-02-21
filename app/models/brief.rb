@@ -4,5 +4,5 @@ class Brief < ActiveRecord::Base
   has_many :comments
 
   validates :body, presence: true
-  validates :body, length: { maximum: 100 }
+  validates :body, length: { maximum: 2000 }
 end

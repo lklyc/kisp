@@ -1,3 +1,6 @@
-<h5>Brief by <%=brief.user.first_name%></h5>
-<p><%= brief.body %></p>
+<h5>Briefed by <%=brief.user.first_name%>
+  <small><%=link_to '(edit)', edit_article_brief_path(@article,brief)%></small>
+</h5>
+<p class="quiet">on <%=brief.created_at%></p>
+<p><%= simple_format(brief.body) %></p>
 <hr/>

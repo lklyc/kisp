@@ -18,7 +18,7 @@
 @import "bootstrap";
 
 .jumbotron {
-  background-color: #292f51;
+  background-color: #000000;
   color: white;
 }
 
@@ -28,6 +28,16 @@
 
 #container-articles-show {
   width: 900px;
+}
+
+.well {
+  background-color: white;
+}
+
+.quiet {
+  font-style: italic;
+  color: #9c9c9c;
+  font-size: 80%;
 }
 
 

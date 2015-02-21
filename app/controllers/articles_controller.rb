@@ -1,10 +1,17 @@
 class ArticlesController < ApplicationController
+  before_action :require_user, except: [:index, :show]
+
+  def index
+    @article = Article.all.order("created_at desc")
+  end
+
   def new
     @article = Article.new
   end
 
   def create
     @article = Article.new(articles_params)
+    @article.user = current_user
 
     if @article.save
       flash[:success] = 'Article created.'
