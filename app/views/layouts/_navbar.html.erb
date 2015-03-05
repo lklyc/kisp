@@ -1,31 +1,50 @@
 <nav class="navbar navbar-inverse">
   <div class="container">
+
     <div class="navbar-header">
       <%= link_to root_path do %>
-        <div class="navbar-brand"><span class="glyphicon glyphicon-file"></span></div>
+        <div class="navbar-brand"><span class="glyphicon glyphicon-briefcase"></span></div>
       <% end %>
     </div>
     
     <% if logged_in? # show more options %>
-      <div class='nav_item'>
-        <%= link_to 'New Article', new_article_path, class: "navbar-text" %>
-      </div>
+      <ul class="nav navbar-nav navbar-right">
+      <li class="dropdown">
+        <%= link_to '#', class: 'btn btn-small dropdown-toggle', 'data-toggle' => 'dropdown' do %>
+          <span class='glyphicon glyphicon-user'></span>
+          <%= current_user.first_name %> 
+          <span class='caret'></span>
+        <% end %>
+        <ul class="dropdown-menu" role="menu">
+          <li><%=link_to 'new Article', new_article_path %></li>
+          <li><%=link_to 'new Event', new_event_path %></li>
+          <li><%=link_to 'new Concept', new_concept_path %></li>
+          <li><%=link_to 'new Opinion', new_opinion_path %></li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to '/logout' do %>
+              <span class='glyphicon glyphicon-log-out'></span>
+             Logout
+            <% end %>
+          </li>
+        </ul>
+      </li>
+    </ul>
     <% end %>
 
+    <div class='nav_item'>
+        <%= link_to 'Articles', root_path, class: "navbar-text" %>
+        <%= link_to 'Events', events_path, class: "navbar-text" %>
+        <%= link_to 'Concepts', concepts_path, class: "navbar-text" %>
+        <%= link_to 'Opinions', opinions_path, class: "navbar-text" %>
+    </div>
+
+    
+
     <div id="navbar" class="navbar-collapse collapse">
-      <!--Sign in -->
-      <!-- <form action='/login', method='post', class="navbar-form navbar-right">
-        <div class="form-group">
-          <input type="text" placeholder="Email" class="form-control">
-        </div>
-        <div class="form-group">
-          <input type="password" placeholder="Password" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-success">Sign in</button>
-      </form> -->
-      <% if logged_in? #show logout button%>
-        <%= link_to 'Logout', '/logout', class: 'navbar-text navbar-right' %>
-      <% else # show login form %>
+
+      <% if !logged_in? #show login form%>
+        
         <%= form_tag '/login', class: "navbar-form navbar-right" do %>
           <%= text_field_tag :email, nil, class: "form-control", placeholder: "Email" %>
           <%= text_field_tag :password, nil, class: "form-control", placeholder: "Password", type: 'password' %>

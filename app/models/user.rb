@@ -4,6 +4,9 @@ has_secure_password
 has_many :articles
 has_many :briefs
 has_many :comments
+has_many :concepts
+has_many :events
+has_many :opinions
 
 validates :first_name, presence: true
 validates :last_name, presence: true

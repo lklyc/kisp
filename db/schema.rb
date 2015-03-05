@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214222241) do
+ActiveRecord::Schema.define(version: 20150304234311) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -26,9 +26,10 @@ ActiveRecord::Schema.define(version: 20150214222241) do
   create_table "briefs", force: true do |t|
     t.text     "body"
     t.integer  "user_id"
-    t.integer  "article_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "briefable_type"
+    t.integer  "briefable_id"
   end
 
   create_table "comments", force: true do |t|
@@ -36,6 +37,36 @@ ActiveRecord::Schema.define(version: 20150214222241) do
     t.integer  "user_id"
     t.integer  "article_id"
     t.integer  "brief_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "concepts", force: true do |t|
+    t.string   "concept"
+    t.string   "context"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "events", force: true do |t|
+    t.string   "who"
+    t.string   "what"
+    t.string   "when"
+    t.string   "where"
+    t.string   "how"
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "opinions", force: true do |t|
+    t.string   "x"
+    t.string   "y"
+    t.integer  "user_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,5 +1,6 @@
 class Brief < ActiveRecord::Base
-  belongs_to :article
+  #belongs_to :article
+  belongs_to :briefable, polymorphic: true
   belongs_to :user
   has_many :comments
 
