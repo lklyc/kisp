@@ -1,6 +1,6 @@
 class OpinionsController < ApplicationController
   def index
-    
+    @opinion = Opinion.all
   end
   
   def new
@@ -13,7 +13,7 @@ class OpinionsController < ApplicationController
 
     if @opinion.save
       flash[:success] = "Opinion created."
-      redirect_to events_path
+      redirect_to opinions_path
     else
       flash[:error] = "Failed to create opinion"
       render :new

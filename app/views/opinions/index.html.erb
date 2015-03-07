@@ -1,1 +1,10 @@
-<%= render 'shared/header', header: 'Opinions', subtitle: nil %>
+<%= render 'shared/header', header: 'Opinions', subtitle: 'I think X is Y' %>
+
+<div class="container">
+<% @opinion.each do |opinion| %>
+    <div class="well well-lg">
+      <h4>I think <em><%=opinion.x%></em> is <em><%=opinion.y %></em></h4>
+      <p class="quiet">posted by <%=opinion.user.first_name%> on <%=opinion.created_at%></p>
+    </div>
+<% end %>
+</div>

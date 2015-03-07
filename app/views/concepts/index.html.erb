@@ -1,1 +1,10 @@
 <%= render 'shared/header', header: 'Concepts', subtitle: nil %>
+
+<div class="container">
+<% @concept.each do |concept| %>
+    <div class="well well-lg">
+      <h4><%=concept.concept%> (<%=concept.context%>)</h4>
+      <p class="quiet">posted by <%=concept.user.first_name%> on <%=concept.created_at%></p>
+    </div>
+<% end %>
+</div>

@@ -1,5 +1,5 @@
 <div class="container" id="container-forms">
-  <%= form_for [@article, @brief] do |f| %>
+  <%= form_for @brief do |f| %>
     <div class='form-group'>
       <%= f.label :body, 'The Brief' %>
       <%= f.text_area :body, rows: 10, class: "form-control" %>

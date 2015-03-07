@@ -1,1 +1,10 @@
-<%= render 'shared/header', header: 'Events', subtitle: nil %>
+<%= render 'shared/header', header: 'Events', subtitle: 'who-what-when-where-why' %>
+
+<div class="container">
+<% @event.each do |event| %>
+    <div class="well well-lg">
+      <h5><%=event.who%> &bull; <%=event.what%> &bull; <%=event.when%> &bull; <%=event.where%> &bull; <%=event.why%></h5>
+      <p class="quiet">posted by <%=event.user.first_name%> on <%=event.created_at%> (<%=link_to 'source', event.source%>)</p>
+    </div>
+<% end %>
+</div>

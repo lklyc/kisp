@@ -1,6 +1,6 @@
 class ConceptsController < ApplicationController
   def index
-    
+    @concept = Concept.all
   end
 
   def new
