@@ -16,16 +16,7 @@
   <% if params[:tab].nil? %>
     <%= link_to 'new Brief', new_brief_path(type: 'Article', id: @article.id), class: 'btn btn-success' %>
     <hr/>
-    <% if @article.briefs.empty? %>
-      <p>No briefs for this article yet, publish one?</p>
-      <hr/>
-    <% else %>
-      <% @article.briefs.each do |brief| %>
-        <div class="well well-lg">
-          <%= render 'briefs/show_briefs', brief: brief %>
-        </div>
-      <% end %>
-    <% end %>
+    <%= render '/briefs/briefs_show', obj: @article, type: 'Article', id: @article.id %>
 
   <% else %>
     <%= form_for [@article,@comment] do |f| %>

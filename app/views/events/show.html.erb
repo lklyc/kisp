@@ -1,16 +1,14 @@
-<%= render 'shared/header', header: @event.display, subtitle: nil %>
+<div class="container">
+  <div class="page-header">
+    <h4><%= @event.display %></h4>
+  </div>
+</div>
 
   <div class="container", id='container-articles-show'>  
     <%= link_to 'new Brief', new_brief_path(type: 'Event', id: @event.id), class: 'btn btn-success' %>
+    
     <hr/>
-    <% if @event.briefs.empty? %>
-      <p>No briefs for this event yet, publish one?</p>
-      <hr/>
-    <% else %>
-      <% @event.briefs.each do |brief| %>
-        <div class="well well-lg">
-          <%= render 'briefs/show_briefs', brief: brief %>
-        </div>
-      <% end %>
-    <% end %>
+
+    <%= render '/briefs/briefs_show', obj: @event, type: 'Event', id: @event.id %>
+
   </div>

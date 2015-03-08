@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   def require_user
     if !logged_in?
-      flash[:error] = 'Sign in first?'
+      flash[:error] = 'please first sign in.'
       redirect_to :back
     end
   end

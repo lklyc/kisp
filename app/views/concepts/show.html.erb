@@ -3,14 +3,7 @@
   <div class="container", id='container-articles-show'>  
     <%= link_to 'new Brief', new_brief_path(type: 'Concept', id: @concept.id), class: 'btn btn-success' %>
     <hr/>
-    <% if @concept.briefs.empty? %>
-      <p>No briefs for this concept yet, publish one?</p>
-      <hr/>
-    <% else %>
-      <% @concept.briefs.each do |brief| %>
-        <div class="well well-lg">
-          <%= render 'briefs/show_briefs', brief: brief %>
-        </div>
-      <% end %>
-    <% end %>
+      
+    <%= render '/briefs/briefs_show', obj: @concept, type: 'Concept', id: @concept.id %>
+
   </div>
