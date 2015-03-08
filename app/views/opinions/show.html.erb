@@ -1,0 +1,16 @@
+<%= render 'shared/header', header: @opinion.display, subtitle: nil %>
+
+  <div class="container", id='container-articles-show'>  
+    <%= link_to 'new Brief', new_brief_path(type: 'Opinion', id: @opinion.id), class: 'btn btn-success' %>
+    <hr/>
+    <% if @opinion.briefs.empty? %>
+      <p>No briefs for this opinion yet, publish one?</p>
+      <hr/>
+    <% else %>
+      <% @opinion.briefs.each do |brief| %>
+        <div class="well well-lg">
+          <%= render 'briefs/show_briefs', brief: brief %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>

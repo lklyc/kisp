@@ -20,6 +20,10 @@ class OpinionsController < ApplicationController
     end
   end
 
+  def show
+    @opinion = Opinion.find(params[:id])
+  end
+
   private
 
   def opinions_params

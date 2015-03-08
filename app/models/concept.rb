@@ -4,4 +4,10 @@ class Concept < ActiveRecord::Base
 
   validates :concept, presence: true
   validates :context, presence: true
+
+  before_save :generate_display
+
+  def generate_display
+    self.display = self.concept + ' (' + self.context + ')'
+  end
 end

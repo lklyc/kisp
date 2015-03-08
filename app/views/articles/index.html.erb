@@ -19,14 +19,10 @@
           <span class="glyphicon glyphicon-chevron-right"></span>
         <% end %>
       </h4>
-      <quiet>
-        <%= link_to 'add Brief', new_brief_path(type: 'Article', id: article.id) %> |
-        <%= link_to 'comments', article_path(article, tab: 'comments') %> 
-      </quiet>
       <p class="quiet">posted by <%=article.user.first_name%> on <%=article.created_at%></p>
       <hr/>
       <% if article.briefs.empty? %>
-        <p>Be the first to <%= link_to 'brief the article', new_article_brief_path(article) %></p>
+        <p>Be the first to <%= link_to 'brief the article', new_brief_path(type: 'Article', id: article.id) %></p>
         <hr/>
       <% else %>
         <% brief = article.briefs.first %>

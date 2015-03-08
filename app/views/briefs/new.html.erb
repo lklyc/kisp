@@ -1,4 +1,4 @@
-<%= render 'shared/header', header: 'New Brief', subtitle: nil %>
+<%= render 'shared/header', header: 'New Brief', subtitle: @briefable.display %>
 <%= render 'shared/errors', obj: @brief %>
 
 <%= render 'briefs_form' %>

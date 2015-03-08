@@ -20,6 +20,10 @@ class ConceptsController < ApplicationController
     end
   end
 
+  def show
+    @concept = Concept.find(params[:id])
+  end
+
   private
 
   def concepts_params

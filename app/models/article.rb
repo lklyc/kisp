@@ -8,4 +8,10 @@ class Article < ActiveRecord::Base
   validates :url, presence: true, uniqueness: true
   validates :published_on, presence: true
   validates :author, presence: true
+
+  before_save :generate_display
+
+  def generate_display
+    self.display = self.title
+  end
 end
