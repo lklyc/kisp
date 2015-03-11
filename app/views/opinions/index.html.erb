@@ -13,15 +13,7 @@
 
       <hr/>
 
-      <% if opinion.briefs.empty? #ask user to create one %>
-        <p>Be the first to <%= link_to 'brief the opinion', new_brief_path(type: 'Opinion', id: opinion.id) %></p>
-        <hr/>
-      <% else #show top voted brief %>
-        <% brief = opinion.briefs.first %>
-        <h5>Briefed by <%=brief.user.first_name%></h5>
-        <p class="quiet">on <%=brief.created_at%></p>
-        <p><%= simple_format(brief.body) %></p>
-      <% end %>
+      <%= render 'briefs/briefs_show', obj: opinion, show_style: 'top', type: 'Opinion', id: opinion.id %>
 
     </div>
 <% end %>

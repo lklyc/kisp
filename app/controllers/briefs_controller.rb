@@ -14,7 +14,7 @@ class BriefsController < ApplicationController
     @@type = nil
     if @brief.save
       flash[:success] = 'Brief has been created'
-      redirect_to root_path
+      redirect_to identify_show_path(@brief.briefable_type, @brief.briefable)
     else
       render :new
     end
@@ -29,7 +29,7 @@ class BriefsController < ApplicationController
     @brief = Brief.find(params[:id])
     if @brief.update(briefs_params)
       flash[:success] = "Brief has been updated"
-      redirect_to root_path
+      redirect_to identify_show_path(@brief.briefable_type, @brief.briefable)
     else
       render :edit
     end
@@ -53,6 +53,23 @@ class BriefsController < ApplicationController
     end
 
     return obj
+  end
+
+  def identify_show_path(type, obj)
+
+    path = root_path
+
+    if type == 'Article'
+      path = article_path(obj)
+    elsif type == 'Event'
+      path = event_path(obj)
+    elsif type == 'Concept'
+      path = concept_path(obj)
+    elsif type == 'Opinion'
+      path = opinion_path(obj)
+    end
+
+    return path
   end
 
 end

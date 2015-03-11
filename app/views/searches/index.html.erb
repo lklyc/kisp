@@ -1,0 +1,67 @@
+<%= render 'shared/header', header: 'Search Results', subtitle: "'" +  @query + "' in " + @type %>
+
+<div class="container">
+  <% if @results %>
+
+    <% @results.each do |result| %>
+
+      <% if @type == 'Articles' %>  
+
+        <div class="well well-lg">
+          <h4><%= result.title %> &bull; <%= result.author %>
+            <%= link_to article_path(result) do %>
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            <% end %>
+          </h4>
+          <p class="quiet">posted by <%=result.user.first_name%> on <%=result.created_at%></p>
+          <hr/>
+          <%= render 'briefs/briefs_show', obj: result, show_style: 'top', type: 'Article', id: result.id %>
+        </div>
+
+      <% elsif @type == 'Events' %>
+
+        <div class="well well-lg">
+          <h5>
+            <%=result.who%> &bull; <%=result.what%> &bull; <%=result.when%> &bull; <%=result.where%> &bull; <%=result.why%>
+            <%= link_to event_path(result) do %>
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            <% end %>
+          </h5>
+          <p class="quiet">posted by <%=result.user.first_name%> on <%=result.created_at%> (<%=link_to 'source', result.source%>)</p>
+          <hr/>
+          <%= render 'briefs/briefs_show', obj: result, show_style: 'top', type: 'Event', id: result.id %>
+        </div>
+
+      <% elsif @type == 'Concepts' %>
+
+        <div class="well well-lg">
+          <h4>
+            <%=result.concept%> (<%=result.context%>)
+            <%= link_to concept_path(result) do %>
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            <% end %>
+          </h4>
+          <p class="quiet">posted by <%=result.user.first_name%> on <%=result.created_at%></p>
+          <hr/>
+          <%= render 'briefs/briefs_show', obj: result, show_style: 'top', type: 'Concept', id: result.id %>
+        </div>
+
+      <% elsif @type == 'Opinions' %>
+
+        <div class="well well-lg">
+          <h4>
+            I think <em><%=result.x%></em> is <em><%=result.y %></em>
+            <%= link_to opinion_path(result) do %>
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            <% end %>
+          </h4>
+          <p class="quiet">posted by <%=result.user.first_name%> on <%=result.created_at%></p>
+          <hr/>
+          <%= render 'briefs/briefs_show', obj: result, show_style: 'top', type: 'Opinion', id: result.id %>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <p> no results </p>
+  <% end %>
+</div>

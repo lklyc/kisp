@@ -43,12 +43,16 @@
 
     <div id="navbar" class="navbar-collapse collapse">
 
-      <% if !logged_in? #show login form%>
-        
-        <%= form_tag '/login', class: "navbar-form navbar-right" do %>
-          <%= text_field_tag :email, nil, class: "form-control", placeholder: "Email" %>
-          <%= text_field_tag :password, nil, class: "form-control", placeholder: "Password", type: 'password' %>
-          <%= submit_tag 'Sign in', class: 'btn btn-success' %>
+      <% if !logged_in? #show login button%>
+        <%= link_to 'Sign in', '/login', class: 'navbar-text navbar-right' %>
+        <span class="navbar-text navbar-right"> | </span>
+      <% end %>
+
+      <%= form_tag searches_path, class: "navbar-form navbar-right" do %>
+        <%= select_tag "type", "<option>Articles</option><option>Events</option><option>Concepts</option><option>Opinions</opinion".html_safe, class: "form-control" %>
+        <%= text_field_tag :query, nil, class: "form-control" %>
+        <%= button_tag nil, class: 'btn btn-success' do %>
+          <span class="glyphicon glyphicon-search"></span>
         <% end %>
       <% end %>
 

@@ -7,17 +7,19 @@
     <h5>Briefed by <%=brief.user.first_name%></h5>
     <p class="quiet">on <%=brief.created_at%></p>
     <p><%= simple_format(brief.body) %></p>
+    <span class="btn btn-primary btn-sm">upvote | 96</span>
   <% else %>
     <% obj.briefs.each do |brief| %>
-      <div class="well well-lg">
-        <h5>Briefed by <%=brief.user.first_name%>
-          <% if logged_in? && brief.user.email == current_user.email %>
-            <small><%=link_to '(edit)', edit_brief_path(brief)%></small>
-          <% end %>
-        </h5>
-        <p class="quiet">on <%=brief.created_at%></p>
-        <p><%= simple_format(brief.body) %></p>
-      </div>
+        <div class="well well-lg">
+          <h5>Briefed by <%=brief.user.first_name%>
+            <% if logged_in? && brief.user.email == current_user.email %>
+              <small><%=link_to '(edit)', edit_brief_path(brief)%></small>
+            <% end %>
+          </h5>
+          <p class="quiet">on <%=brief.created_at%></p>
+          <p><%= simple_format(brief.body) %></p>
+          <span class="btn btn-primary btn-sm">upvote | 96</span>
+        </div>    
     <% end %>
   <% end %>
 <% end %>

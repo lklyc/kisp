@@ -3,5 +3,5 @@
   <div class="container", id='container-articles-show'>  
     <%= link_to 'new Brief', new_brief_path(type: 'Opinion', id: @opinion.id), class: 'btn btn-success' %>
     <hr/>
-    <%= render '/briefs/briefs_show', obj: @opinion, type: 'Opinion', id: @opinion.id %>
+    <%= render '/briefs/briefs_show', obj: @opinion, show_style: 'All', type: 'Opinion', id: @opinion.id %>
   </div>

@@ -16,7 +16,7 @@
   <% if params[:tab].nil? %>
     <%= link_to 'new Brief', new_brief_path(type: 'Article', id: @article.id), class: 'btn btn-success' %>
     <hr/>
-    <%= render '/briefs/briefs_show', obj: @article, type: 'Article', id: @article.id %>
+    <%= render '/briefs/briefs_show', obj: @article, show_style: 'All', type: 'Article', id: @article.id %>
 
   <% else %>
     <%= form_for [@article,@comment] do |f| %>

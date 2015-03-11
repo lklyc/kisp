@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   resources :briefs, only: [:new, :create, :edit, :update]
 
   post '/login', to: 'sessions#create'
+  get '/login', to: 'sessions#new'
   get '/logout', to: 'sessions#destroy'
+
+  get '/results', to: 'searches#index'
+  resources :searches, only: [:create]
 
 end

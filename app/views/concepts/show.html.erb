@@ -4,6 +4,6 @@
     <%= link_to 'new Brief', new_brief_path(type: 'Concept', id: @concept.id), class: 'btn btn-success' %>
     <hr/>
       
-    <%= render '/briefs/briefs_show', obj: @concept, type: 'Concept', id: @concept.id %>
+    <%= render '/briefs/briefs_show', obj: @concept, show_style: 'All', type: 'Concept', id: @concept.id %>
 
   </div>
