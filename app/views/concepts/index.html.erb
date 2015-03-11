@@ -2,18 +2,6 @@
 
 <div class="container">
 <% @concept.each do |concept| %>
-    <div class="well well-lg">
-      <h4>
-        <%=concept.concept%> (<%=concept.context%>)
-        <%= link_to concept_path(concept) do %>
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        <% end %>
-      </h4>
-      <p class="quiet">posted by <%=concept.user.first_name%> on <%=concept.created_at%></p>
-      <hr/>
-
-      
-      <%= render 'briefs/briefs_show', obj: concept, show_style: 'top', type: 'Concept', id: concept.id %>
-    </div>
+  <%= render 'show_concept', concept: concept %>
 <% end %>
 </div>

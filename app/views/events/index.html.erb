@@ -2,19 +2,6 @@
 
 <div class="container">
 <% @event.each do |event| %>
-    <div class="well well-lg">
-      <h5>
-        <%=event.who%> &bull; <%=event.what%> &bull; <%=event.when%> &bull; <%=event.where%> &bull; <%=event.why%>
-        <%= link_to event_path(event) do %>
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        <% end %>
-      </h5>
-      <p class="quiet">posted by <%=event.user.first_name%> on <%=event.created_at%> (<%=link_to 'source', event.source%>)</p>
-      
-      <hr/>
-
-      <%= render 'briefs/briefs_show', obj: event, show_style: 'top', type: 'Event', id: event.id %>
-
-    </div>
+  <%= render 'show_event', event: event %>
 <% end %>
 </div>

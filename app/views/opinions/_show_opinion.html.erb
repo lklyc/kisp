@@ -1,0 +1,14 @@
+<div class="well well-lg">
+  <h4>
+    I think <em><%=opinion.x%></em> is <em><%=opinion.y %></em>
+    <%= link_to opinion_path(opinion) do %>
+      <span class="glyphicon glyphicon-chevron-right"></span>
+    <% end %>
+  </h4>
+  <p class="quiet">posted by <%=opinion.user.first_name%> on <%=opinion.created_at%></p>
+
+  <hr/>
+
+  <%= render 'briefs/briefs_show', obj: opinion, show_style: 'top', type: 'Opinion', id: opinion.id %>
+
+</div>

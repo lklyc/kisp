@@ -2,18 +2,6 @@
 
 <div class="container">
 <% @article.each do |article| %>
-
-    <div class="well well-lg">
-      <h4><%= article.title %> &bull; <%= article.author %>
-        <%= link_to article_path(article) do %>
-          <span class="glyphicon glyphicon-chevron-right"></span>
-        <% end %>
-      </h4>
-      <p class="quiet">posted by <%=article.user.first_name%> on <%=article.created_at%></p>
-      <hr/>
-      
-      <%= render 'briefs/briefs_show', obj: article, show_style: 'top', type: 'Article', id: article.id %>
-
-    </div>
+  <%= render 'show_article', article: article %>
 <% end %>
 </div>

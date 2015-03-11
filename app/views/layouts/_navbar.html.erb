@@ -30,6 +30,7 @@
         </ul>
       </li>
     </ul>
+    <span class="navbar-text navbar-right"> | </span>
     <% end %>
 
     <div class='nav_item'>
@@ -49,8 +50,7 @@
       <% end %>
 
       <%= form_tag searches_path, class: "navbar-form navbar-right" do %>
-        <%= select_tag "type", "<option>Articles</option><option>Events</option><option>Concepts</option><option>Opinions</opinion".html_safe, class: "form-control" %>
-        <%= text_field_tag :query, nil, class: "form-control" %>
+        <%= text_field_tag :query, nil, class: "form-control", placeholder: "Search" %>
         <%= button_tag nil, class: 'btn btn-success' do %>
           <span class="glyphicon glyphicon-search"></span>
         <% end %>
