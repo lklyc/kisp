@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'articles#index'
+  root 'pages#home'
+
+  get '/home', to: 'pages#home'
 
   resources :events, only: [:index, :new, :create, :show]
   resources :concepts, only: [:index, :new, :create, :show]
@@ -14,7 +16,11 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  resources :briefs, only: [:new, :create, :edit, :update]
+  resources :briefs, only: [:new, :create, :edit, :update] do
+    member do
+      post :vote
+    end
+  end
 
   post '/login', to: 'sessions#create'
   get '/login', to: 'sessions#new'

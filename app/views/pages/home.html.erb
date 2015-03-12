@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>D<sup>2</sup>y</h1>
+      <p>60-second briefs of everything</p>
+      <%= link_to "Sign Up", users_register_path, class: "btn btn-success btn-lg" %>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h4>top Article</h4>
+  <%= render 'articles/show_article', article: @article %>
+  <h4>top Event</h4>
+  <%= render 'events/show_event', event: @event %>
+  <h4>top Concept</h4>
+  <%= render 'concepts/show_concept', concept: @concept %>
+  <h4>top Opinion</h4>
+  <%= render 'opinions/show_opinion', opinion: @opinion %>
+</div>

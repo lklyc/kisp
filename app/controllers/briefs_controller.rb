@@ -35,6 +35,22 @@ class BriefsController < ApplicationController
     end
   end
 
+  def vote
+    
+    @brief = Brief.find(params[:id])
+    @vote = Vote.create(vote: 1)
+    @vote.brief = @brief
+    @vote.user = current_user
+
+    if @vote.save
+      flash[:success] = 'voted.'
+      redirect_to :back
+    else
+      flash[:error] = 'error voting.'
+      render :back
+    end
+  end 
+
   private
 
   def briefs_params

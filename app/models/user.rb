@@ -7,6 +7,7 @@ has_many :comments
 has_many :concepts
 has_many :events
 has_many :opinions
+has_many :votes
 
 validates :first_name, presence: true
 validates :last_name, presence: true
