@@ -5,10 +5,10 @@ class SearchesController < ApplicationController
 
     search_term = '%' + @query + '%'
 
-    @articles = Article.where('display LIKE ?', search_term)
-    @events = Event.where('display LIKE ?', search_term)
-    @concepts = Concept.where('display LIKE ?', search_term)
-    @opinions = Opinion.where('display LIKE ?', search_term)
+    @articles = Article.where('display ILIKE ?', search_term)
+    @events = Event.where('display ILIKE ?', search_term)
+    @concepts = Concept.where('display ILIKE ?', search_term)
+    @opinions = Opinion.where('display ILIKE ?', search_term)
 
     @@articles = @articles
     @@events = @events
