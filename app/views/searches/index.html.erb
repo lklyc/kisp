@@ -22,26 +22,42 @@
 <div class="container">
   <% if params[:tab].nil? %>
 
-    <% @articles.each do |article| %>
-      <%= render 'articles/show_article', article: article %>
+    <% if @articles.size > 0 %>
+      <% @articles.each do |article| %>
+        <%= render 'articles/show_article', article: article %>
+      <% end %>
+    <% else %>
+      <p>sorry! nothing came up...</p>
     <% end %>
 
   <% elsif params[:tab] == 'events' %>
 
-    <% @events.each do |event| %>
-      <%= render 'events/show_event', event: event %>
+    <% if @events.size > 0 %>
+      <% @events.each do |event| %>
+        <%= render 'events/show_event', event: event %>
+      <% end %>
+    <% else %>
+      <p>sorry! nothing came up...</p>
     <% end %>
 
   <% elsif params[:tab] == 'concepts' %>
 
-    <% @concepts.each do |concept| %>
-      <%= render 'concepts/show_concept', concept: concept %>
+    <% if @concepts.size > 0 %>
+      <% @concepts.each do |concept| %>
+        <%= render 'concepts/show_concept', concept: concept %>
+      <% end %>
+    <% else %>
+      <p>sorry! nothing came up...</p>
     <% end %>
 
   <% elsif params[:tab] == 'opinions' %>
 
-    <% @opinions.each do |opinion| %>
-      <%= render 'opinions/show_opinion', opinion: opinion %>
+    <% if @opinions.size > 0 %>
+      <% @opinions.each do |opinion| %>
+        <%= render 'opinions/show_opinion', opinion: opinion %>
+      <% end %>
+    <% else %>
+      <p>sorry! nothing came up...</p>
     <% end %>
 
   <% end %>
