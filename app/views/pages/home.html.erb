@@ -9,12 +9,27 @@
 </div>
 
 <div class="container">
-  <h4>top Article</h4>
+  <h4 class="badge">top Article</h4>
+  <%= link_to articles_path do %>
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  <% end %>
   <%= render 'articles/show_article', article: @article %>
-  <h4>top Event</h4>
+
+  <h4 class="badge">top Event</h4>
+  <%= link_to events_path do %>
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  <% end %>
   <%= render 'events/show_event', event: @event %>
-  <h4>top Concept</h4>
+
+  <h4 class="badge">top Concept</h4>
+  <%= link_to concepts_path do %>
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  <% end %>
   <%= render 'concepts/show_concept', concept: @concept %>
-  <h4>top Opinion</h4>
+
+  <h4 class="badge">top Opinion</h4>
+  <%= link_to opinions_path do %>
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  <% end %>
   <%= render 'opinions/show_opinion', opinion: @opinion %>
 </div>

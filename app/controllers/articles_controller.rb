@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   before_action :require_user, except: [:index, :show]
 
   def index
-    @article = Article.all.sort_by{|x| x.total_votes}.reverse
+    @article = Article.all.order("created_at desc")
   end
 
   def new

@@ -1,0 +1,5 @@
+<% if @vote.valid? %>
+  $("#brief_<%=@brief.id%>_votes").html("<%=@brief.total_votes%>");
+<% else %>
+  alert("can't vote more than once!");
+<% end %>

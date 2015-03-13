@@ -36,18 +36,24 @@ class BriefsController < ApplicationController
   end
 
   def vote
-    
     @brief = Brief.find(params[:id])
-    @vote = Vote.create(vote: 1)
-    @vote.brief = @brief
-    @vote.user = current_user
+    @vote = Vote.create(vote: 1, user: current_user, brief: @brief)
 
-    if @vote.save
-      flash[:success] = 'voted.'
-      redirect_to :back
-    else
-      flash[:error] = 'error voting.'
-      render :back
+    respond_to do |format|
+      format.html do
+        
+        @vote.brief = @brief
+        @vote.user = current_user
+
+        if @vote.save
+          flash[:success] = 'voted.'
+          redirect_to :back
+        else
+          flash[:error] = 'error voting.'
+          render :back
+        end
+      end
+      format.js #look for vote.js.erb by default
     end
   end 
 
