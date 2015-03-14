@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require turbolinks
@@ -18,7 +19,7 @@
 
 
 $(document).ready(function() {
-  $("#brief_body").keydown(function() {
+  $("#brief_body").keyup(function() {
     $("#counter").text(1000 - $(this).val().length + " characters remaining");
   });
 });
