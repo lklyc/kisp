@@ -1,36 +1,15 @@
-<%= render 'shared/header', header: @article.title, subtitle: nil %>
+<div class="container">
+  <div class="page-header">
+    <h1><%=@article.title%><small><em><%=link_to ' (source)', @article.url %></em></small></h1>
+  </div>
+</div>
 
 <div class="container", id='container-articles-show'>
-  <ul class='nav nav-tabs'>
-    <li class="<%= 'active' if params[:tab].nil?%>">
-      <%= link_to "Briefs (#{@article.briefs.size})", article_path(@article) %>
-    </li>
-    <li class="<%= 'active' if params[:tab]=='comments'%>">
-      <%= link_to "Comments (#{@article.comments.size})", article_path(@article, tab: 'comments') %>
-    </li>
-  </ul>
-
-<br/>
-
-
-  <% if params[:tab].nil? %>
     <%= link_to 'new Brief', new_brief_path(type: 'Article', id: @article.id), class: 'btn btn-success' %>
+    <% if logged_in? && current_user.id == @article.user.id %>
+      <%= link_to 'edit Article', edit_article_path(@article), class: 'btn btn-primary' %>
+    <% end %>
     <hr/>
     <%= render '/briefs/briefs_show', obj: @article, show_style: 'All', type: 'Article', id: @article.id %>
 
-  <% else %>
-    <%= form_for [@article,@comment] do |f| %>
-      <div class='form-group'>
-        <%= f.label :body, 'new comment' %>
-        <%= f.text_area :body, rows: 3, class: 'form-control' %>
-      </div>
-      <%= f.submit 'Create', class: 'btn btn-success' %>
-    <% end %>
-    <hr/>
-      <% @article.comments.each do |comment| %>
-        <div class="well well-lg">
-          <em><%=comment.body%></em>
-        </div>
-      <% end %>
-  <% end %>
 </div>

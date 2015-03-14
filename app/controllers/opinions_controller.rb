@@ -24,6 +24,21 @@ class OpinionsController < ApplicationController
     @opinion = Opinion.find(params[:id])
   end
 
+  def edit
+    @opinion = Opinion.find(params[:id])
+    #@article = Article.find(params[:article_id])
+  end
+
+  def update
+    @opinion = Opinion.find(params[:id])
+    if @opinion.update(opinions_params)
+      flash[:success] = "Article has been updated"
+      redirect_to opinion_path(@opinion)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def opinions_params

@@ -4,14 +4,14 @@ Rails.application.routes.draw do
 
   get '/home', to: 'pages#home'
 
-  resources :events, only: [:index, :new, :create, :show]
-  resources :concepts, only: [:index, :new, :create, :show]
-  resources :opinions, only: [:index, :new, :create, :show]
+  resources :events, only: [:index, :new, :create, :show, :edit, :update]
+  resources :concepts, only: [:index, :new, :create, :show, :edit, :update]
+  resources :opinions, only: [:index, :new, :create, :show, :edit, :update]
 
   resources :users, only: [:create]
   get 'users/register', to: 'users#new'
 
-  resources :articles, only: [:index, :new, :create, :show] do
+  resources :articles, only: [:index, :new, :create, :show, :edit, :update] do
     #resources :briefs, only: [:new, :create, :edit, :update]
     resources :comments, only: [:create]
   end

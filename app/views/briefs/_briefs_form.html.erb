@@ -2,9 +2,10 @@
   <%= form_for @brief do |f| %>
     <div class='form-group'>
       <%= f.label :body, 'The Brief' %>
-      <%= f.text_area :body, rows: 10, class: "form-control" %>
+      <%= f.text_area :body, rows: 15, class: "form-control" %>
     </div>
-    <p class="text-right">1500 characters limit</p>
-    <%= f.submit 'Create', class: 'btn btn-success' %>
+    <p id="counter" class="text-right">1000 characters remaining</p>
+    <%= f.submit(@brief.new_record? ? 'Create' : 'Update', class: 'btn btn-success') %>
   <% end %>
+
 </div>

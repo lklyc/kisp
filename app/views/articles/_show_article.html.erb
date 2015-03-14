@@ -4,7 +4,7 @@
       <span class="glyphicon glyphicon-chevron-right"></span>
     <% end %>
   </h4>
-  <p class="quiet">posted by <%=article.user.first_name%> on <%=article.created_at%></p>
+  <p class="quiet">posted by <%=article.user.first_name%> on <%=article.created_at%> (<%=link_to 'source', article.url%>)</p>
   <hr/>
   
   <%= render 'briefs/briefs_show', obj: article, show_style: 'top', type: 'Article', id: article.id %>

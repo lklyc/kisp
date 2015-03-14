@@ -1,0 +1,31 @@
+<div class="container" id="container-forms">
+  <%= form_for @event do |f| %>
+    <div class="form-group">
+      <%= f.label :who %>
+      <%= f.text_field :who, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :what %>
+      <%= f.text_field :what, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :when %>
+      <%= f.text_field :when, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :where %>
+      <%= f.text_field :where, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :why %>
+      <%= f.text_field :why, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :source %>
+      <%= f.text_field :source, class: "form-control" %>
+    </div>       
+    <div class="form-group">
+      <%= f.submit(@event.new_record? ? 'Create' : 'Update', class: 'btn btn-success') %>
+    </div>
+  <% end %>
+</div>

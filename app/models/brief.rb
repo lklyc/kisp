@@ -6,7 +6,7 @@ class Brief < ActiveRecord::Base
   has_many :votes
 
   validates :body, presence: true
-  validates :body, length: { maximum: 2000 }
+  validates :body, length: { maximum: 1000 }
 
   def total_votes
     self.votes.size

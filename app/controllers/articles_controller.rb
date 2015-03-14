@@ -9,6 +9,11 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+  def edit
+    @article = Article.find(params[:id])
+    #@article = Article.find(params[:article_id])
+  end
+
   def create
     @article = Article.new(articles_params)
     @article.user = current_user
@@ -19,6 +24,16 @@ class ArticlesController < ApplicationController
     else
       flash[:error] = "Failed to create article"
       render :new
+    end
+  end
+
+  def update
+    @article = Article.find(params[:id])
+    if @article.update(articles_params)
+      flash[:success] = "Article has been updated"
+      redirect_to article_path(@article)
+    else
+      render :edit
     end
   end
 

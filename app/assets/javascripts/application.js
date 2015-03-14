@@ -15,3 +15,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).ready(function() {
+  $("#brief_body").keydown(function() {
+    $("#counter").text(1000 - $(this).val().length + " characters remaining");
+  });
+});

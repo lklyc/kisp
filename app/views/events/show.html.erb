@@ -1,12 +1,14 @@
 <div class="container">
   <div class="page-header">
-    <h4><%= @event.display %></h4>
+    <h4><%= @event.display %><small><em><%=link_to ' (source)', @event.source %></em></small></h4>
   </div>
 </div>
 
   <div class="container", id='container-articles-show'>  
     <%= link_to 'new Brief', new_brief_path(type: 'Event', id: @event.id), class: 'btn btn-success' %>
-    
+    <% if logged_in? && current_user.id == @event.user.id %>
+      <%= link_to 'edit Event', edit_event_path(@event), class: 'btn btn-primary' %>
+    <% end %>
     <hr/>
 
     <%= render '/briefs/briefs_show', obj: @event, show_style: 'All', type: 'Event', id: @event.id %>

@@ -2,6 +2,9 @@
 
   <div class="container", id='container-articles-show'>  
     <%= link_to 'new Brief', new_brief_path(type: 'Opinion', id: @opinion.id), class: 'btn btn-success' %>
+    <% if logged_in? && current_user.id == @opinion.user.id %>
+      <%= link_to 'edit Opinion', edit_opinion_path(@opinion), class: 'btn btn-primary' %>
+    <% end %>
     <hr/>
     <%= render '/briefs/briefs_show', obj: @opinion, show_style: 'All', type: 'Opinion', id: @opinion.id %>
   </div>

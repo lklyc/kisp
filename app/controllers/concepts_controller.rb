@@ -7,6 +7,10 @@ class ConceptsController < ApplicationController
     @concept = Concept.new
   end
 
+  def edit
+    @concept = Concept.find(params[:id])
+  end
+
   def create
     @concept = Concept.new(concepts_params)
     @concept.user = current_user
@@ -17,6 +21,16 @@ class ConceptsController < ApplicationController
     else
       flash[:error] = "Failed to create Concept"
       render :new
+    end
+  end
+
+  def update
+    @concept = Concept.find(params[:id])
+    if @concept.update(concepts_params)
+      flash[:success] = "Concept has been updated"
+      redirect_to concept_path(@concept)
+    else
+      render :edit
     end
   end
 
