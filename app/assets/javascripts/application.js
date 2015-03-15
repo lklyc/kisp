@@ -20,6 +20,6 @@
 
 $(document).ready(function() {
   $("#brief_body").keyup(function() {
-    $("#counter").text(1000 - $(this).val().length + " characters remaining");
+    $("#counter").text(1400 - $(this).val().length + " characters remaining");
   });
 });
