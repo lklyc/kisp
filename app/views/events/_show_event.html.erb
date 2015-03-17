@@ -5,7 +5,7 @@
       <span class="glyphicon glyphicon-chevron-right"></span>
     <% end %>
   </h5>
-  <p class="quiet">posted by <%=event.user.first_name%> on <%=event.created_at%> (<%=link_to 'source', event.source%>)</p>
+  <p class="quiet">posted by <%=event.user.first_name%> <%=time_since(event.created_at)%> (<%=link_to 'source', event.source%>)</p>
   
   <hr/>
 

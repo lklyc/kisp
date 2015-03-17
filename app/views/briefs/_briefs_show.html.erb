@@ -4,8 +4,7 @@
 <% else %>
   <% if show_style == 'top' %>
     <% brief = obj.briefs.sort_by{|x| x.total_votes}.reverse.first %>
-    <h5>Briefed by <%=brief.user.first_name%></h5>
-    <p class="quiet">on <%=brief.created_at%></p>
+    <h5>Briefed by <%=brief.user.first_name%> <small class="quiet"><%=time_since(brief.created_at)%></small></h5>
     <p><%= simple_format(brief.body) %></p>
     <%= link_to  vote_brief_path(brief), method: 'post', remote: true do %>
       <span class="btn btn-primary btn-sm">upvote | <span id='brief_<%=brief.id%>_votes'><%=brief.total_votes%></span></span>
@@ -13,12 +12,11 @@
   <% else %>
     <% obj.briefs.sort_by{|x| x.total_votes}.reverse.each do |brief| %>
         <div class="well well-lg">
-          <h5>Briefed by <%=brief.user.first_name%>
+          <h5>Briefed by <%=brief.user.first_name%> <small class="quiet"><%=time_since(brief.created_at)%></small>
             <% if logged_in? && brief.user.email == current_user.email %>
               <small><%=link_to '(edit)', edit_brief_path(brief)%></small>
             <% end %>
           </h5>
-          <p class="quiet">on <%=brief.created_at%></p>
           <p><%= simple_format(brief.body) %></p>
           <%= link_to  vote_brief_path(brief), method: 'post', remote: true do %>
             <span class="btn btn-primary btn-sm">upvote | <span id='brief_<%=brief.id%>_votes'><%=brief.total_votes%></span></span>

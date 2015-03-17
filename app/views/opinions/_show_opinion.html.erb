@@ -5,7 +5,7 @@
       <span class="glyphicon glyphicon-chevron-right"></span>
     <% end %>
   </h4>
-  <p class="quiet">posted by <%=opinion.user.first_name%> on <%=opinion.created_at%></p>
+  <p class="quiet">posted by <%=opinion.user.first_name%> <%=time_since(opinion.created_at)%></p>
 
   <hr/>
 

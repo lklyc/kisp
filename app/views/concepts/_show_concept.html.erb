@@ -5,7 +5,7 @@
       <span class="glyphicon glyphicon-chevron-right"></span>
     <% end %>
   </h4>
-  <p class="quiet">posted by <%=concept.user.first_name%> on <%=concept.created_at%></p>
+  <p class="quiet">posted by <%=concept.user.first_name%> <%=time_since(concept.created_at)%></p>
   <hr/>
 
   
