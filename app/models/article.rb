@@ -6,7 +6,6 @@ class Article < ActiveRecord::Base
 
   validates :title, presence: true
   validates :url, presence: true, uniqueness: true
-  validates :published_on, presence: true
   validates :author, presence: true
 
   before_save :generate_display
